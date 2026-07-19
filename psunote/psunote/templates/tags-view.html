@@ -6,7 +6,15 @@
     <a class="btn btn-primary" href="{{ url_for('index') }}">Home</a>
   </li>
   <li class="nav-item">
-    <div class="btn btn-disagle">{{ tag }}</div>
+    <div class="btn btn-disagle">{{ tag.name }}</div>
+  </li>
+  <li class="nav-item">
+    <a class="btn btn-secondary" href="{{ url_for('tags_edit', tag_id=tag.id) }}">Edit Tag</a>
+  </li>
+  <li class="nav-item">
+    <form action="{{ url_for('tags_delete', tag_id=tag.id) }}" method="POST">
+      <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this tag?')">Delete Tag</button>
+    </form>
   </li>
 </ul>
 {% for note in notes %}
